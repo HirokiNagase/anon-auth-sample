@@ -3,7 +3,9 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { checkIfLoggedIn, signInAnonymously } from "@/functions/user";
 import { Session } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "expo-router";
+import React from "react";
 
 export default function TabOneScreen() {
   const [userSession, setUserSession] = useState<Session | null>(null);
@@ -18,9 +20,12 @@ export default function TabOneScreen() {
     }
   };
 
-  useEffect(() => {
-    login();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      login();
+      return;
+    }, [])
+  );
 
   return (
     <View style={styles.container}>

@@ -1,6 +1,11 @@
-import { Button, StyleSheet, TextInput } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Button,
+  StyleSheet,
+  TextInput,
+} from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { useState } from "react";
 import { fetchHandover } from "@/functions/user";
@@ -8,11 +13,18 @@ import { fetchHandover } from "@/functions/user";
 export default function TabTwoScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    // 送信処理をここに実装
-    await fetchHandover({ email, password });
-    // dispatch(setSession(newSession));
+    setLoading(true);
+    try {
+      await fetchHandover({ email, password });
+      Alert.alert("ログイン完了");
+    } catch (error) {
+      Alert.alert("エラー", "ログイン処理中にエラーが発生しました。");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -37,7 +49,11 @@ export default function TabTwoScreen() {
         value={password}
         secureTextEntry
       />
-      <Button title="Submit" onPress={handleSubmit} />
+      {isLoading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <Button title="Submit" onPress={handleSubmit} />
+      )}
     </View>
   );
 }

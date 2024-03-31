@@ -71,7 +71,7 @@ export default function registorScreen() {
         </>
       )}
       {isLoading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" />
       ) : (
         <Button title="Submit" onPress={handleSubmit} />
       )}
