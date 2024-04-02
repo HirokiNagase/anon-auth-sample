@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
-
 import { Text, View } from "@/components/Themed";
 import { useState } from "react";
 import { fetchHandover } from "@/functions/user";

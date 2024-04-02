@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { checkIfLoggedIn, signInAnonymously } from "@/functions/user";
 import { Session } from "@supabase/supabase-js";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import React from "react";
 
