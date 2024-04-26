@@ -10,7 +10,7 @@ cp .env.sample .env
 
 これで作成された.env ファイルの key に対応する値を埋めていく。
 
-Supabase url も annon key のどちらも Settings > API 　の中に書かれてているのでその値を利用する
+SUPABASE_URL と SUPABASE_ANON_KEY のどちらも Settings > API の中に書かれてているのでその値を利用すること
 
 ### Supabase の設定変更
 
@@ -24,6 +24,8 @@ Authentication > Providers > Email から
 
 また、匿名認証を行うため
 
-Settings > Authentication > Auth Settings > User Signups の -　 Allow anonymous sign-ins を true
+Settings > Authentication > Auth Settings > User Signups の
+
+- Allow anonymous sign-ins を true
 
 にしてやる必要がある
